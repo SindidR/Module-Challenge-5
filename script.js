@@ -5,23 +5,19 @@ $(document).ready(function () {
     $(".saveBtn").on("click", function () {
         var text = $(this).siblings(".description").val();
         var time = $(this).parent().attr("id");
-
-        // Save text 
         localStorage.setItem(time, text);
     })
-   // Time tracker to show the current date
+
     function timeTracker() {
         var timeNow = moment().hour();
 
-        // loop over time blocks
         $(".time-block").each(function () {
             var blockTime = parseInt($(this).attr("id").split("hour")[1]);
-            // background indicators to show past,current, and future in different colors
-            if (blockTime < timeNow) {
+                if (blockTime < timeNow) {
                 $(this).removeClass("future");
                 $(this).removeClass("present");
                 $(this).addClass("past");
-            }
+                }
             else if (blockTime === timeNow) {
                 $(this).removeClass("past");
                 $(this).removeClass("future");
@@ -34,9 +30,8 @@ $(document).ready(function () {
             }
         })
     }
-    // Get items from local storage 
     $("#hour8 .description").val(localStorage.getItem("hour8"));
-    $("#hour9 .description").val(localStorage.getItem("hour9"));
+    $("#hour9 .description").val(lcalStorage.getItem("hour9"));
     $("#hour10 .description").val(localStorage.getItem("hour10"));
     $("#hour11 .description").val(localStorage.getItem("hour11"));
     $("#hour12 .description").val(localStorage.getItem("hour12"));
